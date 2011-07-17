@@ -4,7 +4,7 @@
 # -*- encoding: utf-8 -*-
 
 Gem::Specification.new do |s|
-  s.name = %q{aq1018-sunspot_mongoid}
+  s.name = %q{sunspot_mongoid}
   s.version = "0.5.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
@@ -22,7 +22,7 @@ Gem::Specification.new do |s|
     "README.md",
     "Rakefile",
     "VERSION",
-    "aq1018-sunspot_mongoid.gemspec",
+    "sunspot_mongoid.gemspec",
     "examples/example.rb",
     "init.rb",
     "lib/sunspot/mongoid.rb",

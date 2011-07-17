@@ -4,7 +4,7 @@ require 'rake'
 begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
-    gem.name = "aq1018-sunspot_mongoid"
+    gem.name = "sunspot_mongoid"
     gem.summary = %Q{A Sunspot wrapper for Mongoid.}
     gem.description = %Q{A Sunspot wrapper for Mongoid that is like sunspot_rails.}
     gem.email = "jugyo.org@gmail.com aq1018@gmail.com"
