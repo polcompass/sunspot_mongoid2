@@ -2,18 +2,6 @@ require 'sunspot'
 require 'mongoid'
 require 'sunspot/rails'
 
-# == Examples:
-#
-# class Post
-#   include Mongoid::Document
-#   field :title
-# 
-#   include Sunspot::Mongoid
-#   searchable do
-#     text :title
-#   end
-# end
-#
 module Sunspot
   module Mongoid
     def self.included(base)
@@ -51,11 +39,11 @@ module Sunspot
 
     class DataAccessor < Sunspot::Adapters::DataAccessor
       def load(id)
-        @clazz.find(::Moped::BSON::ObjectID.from_string(id)) rescue nil
+        @clazz.find(::Moped::BSON::ObjectId.from_string(id)) rescue nil
       end
 
       def load_all(ids)
-        @clazz.where(:_id.in => ids.map { |id| ::Moped::BSON::ObjectID.from_string(id) })
+        @clazz.where(:_id.in => ids.map { |id| ::Moped::BSON::ObjectId.from_string(id) })
       end
       
     end
