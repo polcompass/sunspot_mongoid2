@@ -51,11 +51,11 @@ module Sunspot
 
     class DataAccessor < Sunspot::Adapters::DataAccessor
       def load(id)
-        @clazz.find(BSON::ObjectID.from_string(id)) rescue nil
+        @clazz.find(::Moped::BSON::ObjectID.from_string(id)) rescue nil
       end
 
       def load_all(ids)
-        @clazz.where(:_id.in => ids.map { |id| BSON::ObjectId.from_string(id) })
+        @clazz.where(:_id.in => ids.map { |id| ::Moped::BSON::ObjectID.from_string(id) })
       end
       
     end
