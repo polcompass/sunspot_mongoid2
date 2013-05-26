@@ -1,50 +1,63 @@
 sunspot_mongoid
 ====
 
-A Sunspot wrapper for Mongoid.
+A Sunspot wrapper for Mongoid that just works.
 
-Install
+Gemfile
+----
+    gem 'sunspot_mongoid', :git => 'https://github.com/hlegius/sunspot_mongoid.git'
+    bundle install
+
+For Rails 3.x
 ----
 
-    gem install sunspot_mongoid
+### Configure your gem
 
-Examples
+Create `config/initializers/sunspot_mongoid.rb`:
+
+    Sunspot.session = Sunspot::Rails.build_session
+    ActionController::Base.module_eval { include(Sunspot::Rails::RequestLifecycle) }
+    
+Don't forget to restart your rack server (or pow.cx)
+
+### as plugin (only if really needed):
+
+add gems to Gemfile as following,
+
+    gem 'sunspot_mongoid', :git => 'https://github.com/hlegius/sunspot_mongoid.git'
+    gem 'sunspot_rails'
+
+and install `sunspot_mongoid` as rails plugin,
+
+    rails plugin install https://github.com/hlegius/sunspot_mongoid.git
+
+
+A Simple Example
 ----
 
     class Post
       include Mongoid::Document
-      field :title
-
       include Sunspot::Mongoid
+
       searchable do
         text :title
       end
+
+      field :title
     end
 
-For Rails3
-----
+    class SomeController < ActionController::Base
+      def index
+        search = Sunspot.search(Post) do
+          fulltext params[:q]
+        end
+        
+        @results = search.results
+        @total_lines = search.total
+      end
+    end
 
-### as gem:
-
-add a gem to Gemfile as following,
-
-    gem 'sunspot_mongoid'
-
-create config/initializers/sunspot_mongoid.rb,
-
-    Sunspot.session = Sunspot::Rails.build_session
-    ActionController::Base.module_eval { include(Sunspot::Rails::RequestLifecycle) }
-
-### as plugin:
-
-add gems to Gemfile as following,
-
-    gem 'sunspot'
-    gem 'sunspot_rails'
-
-and install sunspot_mongoid as rails plugin,
-
-    rails plugin install git://github.com/jugyo/sunspot_mongoid.git
+    # http://yourapplication.dev/search?q=foobarbaz
 
 Links
 ----
@@ -52,7 +65,11 @@ Links
 * [sunspot](http://github.com/outoftime/sunspot)
 * [sunspot_rails](http://github.com/outoftime/sunspot/tree/master/sunspot_rails/)
 
-Copyright
+
+
+Copyright (and left)
 ----
 
 Copyright (c) 2010 jugyo. See LICENSE for details.
+
+A lot of other contributions were made before I did.
