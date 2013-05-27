@@ -1,2 +1,2 @@
-require 'sunspot/mongoid'
-require 'sunspot/mongoid/railtie' if defined?(Rails)
+require 'sunspot/mongoid2'
+require 'sunspot/mongoid2/railtie' if defined?(Rails)

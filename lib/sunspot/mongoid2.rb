@@ -3,7 +3,7 @@ require 'mongoid'
 require 'sunspot/rails'
 
 module Sunspot
-  module Mongoid
+  module Mongoid2
     def self.included(base)
       base.class_eval do
         extend Sunspot::Rails::Searchable::ActsAsMethods
@@ -45,7 +45,6 @@ module Sunspot
       def load_all(ids)
         @clazz.where(:_id.in => ids.map { |id| ::Moped::BSON::ObjectId.from_string(id) })
       end
-      
     end
   end
 end

@@ -5,7 +5,7 @@ begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
     gem.name = "sunspot_mongoid2"
-    gem.version = '0.5.1.1'
+    gem.version = '0.5.1.2'
     gem.summary = %Q{A Sunspot wrapper for Mongoid 2 or newer.}
     gem.description = %Q{A Sunspot wrapper for Mongoid that is like sunspot_rails.}
     gem.email = "jugyo.org@gmail.com aq1018@gmail.com hlegius@gmail.com"
@@ -28,9 +28,9 @@ begin
       "VERSION",
       "examples/example.rb",
       "init.rb",
-      "lib/sunspot/mongoid.rb",
-      "lib/sunspot/mongoid/railtie.rb",
       "lib/sunspot_mongoid2.rb",
+      "lib/sunspot/mongoid2.rb",
+      "lib/sunspot/mongoid2/railtie.rb",
       "sunspot_mongoid2.gemspec",
       "tasks/sunspot_mongoid2.rake",
       "test/helper.rb",
