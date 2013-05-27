@@ -1,11 +1,11 @@
-sunspot_mongoid
+sunspot_mongoid 2
 ====
 
 A Sunspot wrapper for Mongoid that just works.
 
 Gemfile
 ----
-    gem 'sunspot_mongoid', :git => 'https://github.com/hlegius/sunspot_mongoid.git'
+    gem 'sunspot_mongoid2'
     bundle install
 
 For Rails 3.x
@@ -24,7 +24,7 @@ Don't forget to restart your rack server (or pow.cx)
 
 add gems to Gemfile as following,
 
-    gem 'sunspot_mongoid', :git => 'https://github.com/hlegius/sunspot_mongoid.git'
+    gem 'sunspot_mongoid2'
     gem 'sunspot_rails'
 
 and install `sunspot_mongoid` as rails plugin,
