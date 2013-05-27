@@ -15,6 +15,26 @@ begin
     gem.add_runtime_dependency "sunspot_rails", ">= 2"
     gem.add_development_dependency "shoulda", ">= 0"
     gem.add_development_dependency "rr", ">= 0"
+    gem.extra_rdoc_files = [
+      "LICENSE",
+      "README.md"
+    ]
+    gem.files = [
+      ".document",
+      "LICENSE",
+      "README.md",
+      "Rakefile",
+      "VERSION",
+      "examples/example.rb",
+      "init.rb",
+      "lib/sunspot/mongoid.rb",
+      "lib/sunspot/mongoid/railtie.rb",
+      "lib/sunspot_mongoid2.rb",
+      "sunspot_mongoid2.gemspec",
+      "tasks/sunspot_mongoid2.rake",
+      "test/helper.rb",
+      "test/test_sunspot_mongoid.rb"
+    ]
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
   end
   Jeweler::GemcutterTasks.new
