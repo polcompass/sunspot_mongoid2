@@ -29,7 +29,7 @@ add gems to Gemfile as following,
 
 and install `sunspot_mongoid` as rails plugin,
 
-    rails plugin install https://github.com/hlegius/sunspot_mongoid.git
+    rails plugin install https://github.com/hlegius/sunspot_mongoid2.git
 
 
 A Simple Example
@@ -37,7 +37,7 @@ A Simple Example
 
     class Post
       include Mongoid::Document
-      include Sunspot::Mongoid
+      include Sunspot::Mongoid2
 
       searchable do
         text :title
