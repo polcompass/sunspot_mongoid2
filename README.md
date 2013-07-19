@@ -41,6 +41,7 @@ A Simple Example
 
       searchable do
         text :title
+        integer :foo_totals, multiple: true
       end
 
       field :title
