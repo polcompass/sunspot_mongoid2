@@ -16,8 +16,8 @@ module Sunspot
     module ActsAsMethods
       # ClassMethods isn't loaded until searchable is called so we need
       # call it, then extend our own ClassMethods.
-      def searchable (opt = {}, &block)
-        super 
+      def searchable(opt = {}, &block)
+        super
         extend ClassMethods
       end
     end
