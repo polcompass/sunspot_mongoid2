@@ -1,14 +1,11 @@
 require 'helper'
 
-#
-# NOTE: I think tests are too few...
-#
-class TestSunspotMongoid < Test::Unit::TestCase
+describe Sunspot::Mongoid2 do
   class Foo
     include Mongoid::Document
     field :title
 
-    include Sunspot::Mongoid
+    include Sunspot::Mongoid2
     searchable do
       text :title
     end
@@ -18,30 +15,30 @@ class TestSunspotMongoid < Test::Unit::TestCase
     include Mongoid::Document
     field :title
 
-    include Sunspot::Mongoid
+    include Sunspot::Mongoid2
     searchable(:auto_index => false, :auto_remove => false) do
       text :title
     end
   end
 
-  context 'default' do
-    should 'sunspot_options is specified' do
-      assert Foo.sunspot_options == {:include => []}
-      assert Bar.sunspot_options == {:auto_index=>false, :auto_remove=>false, :include=>[]}
+  describe 'initial' do
+    it 'sunspot_options is specified' do
+      Foo.sunspot_options.must_equal({include: []})
+      Bar.sunspot_options.must_equal({auto_index: false, auto_remove: false, include: []})
     end
 
-    should 'be called Sunspot.setup when call Foo.searchable' do
+    it 'get as text_fields from Sunspot::Setup' do
+      text_field = Sunspot::Setup.for(Foo).all_text_fields.first
+      text_field.type.must_be_instance_of Sunspot::Type::TextType
+      text_field.name.must_equal :title
+    end
+
+    it 'be called Sunspot.setup when call Foo.searchable' do
       mock(Sunspot).setup(Foo)
       Foo.searchable
     end
 
-    should 'get as text_fields from Sunspot::Setup' do
-      text_field = Sunspot::Setup.for(Foo).all_text_fields.first
-      assert text_field.type == Sunspot::Type::TextType.instance
-      assert text_field.name == :title
-    end
-
-    should 'search' do
+    it '#search' do
       options = {}
       mock.proxy(Foo).solr_execute_search(options)
       mock(Sunspot).new_search(Foo) { mock(Object.new).execute }
