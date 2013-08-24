@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "sunspot_mongoid2"
-  s.version = "0.5.1.5"
+  s.version = "0.5.1.6"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["jugyo", "aq1018", "hlegius"]
-  s.date = "2013-05-27"
+  s.date = "2013-08-24"
   s.description = "A Sunspot wrapper for Mongoid that is like sunspot_rails."
   s.email = "jugyo.org@gmail.com aq1018@gmail.com hlegius@gmail.com"
   s.extra_rdoc_files = [
