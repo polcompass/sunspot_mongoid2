@@ -39,11 +39,19 @@ module Sunspot
 
     class DataAccessor < Sunspot::Adapters::DataAccessor
       def load(id)
-        @clazz.find(::Moped::BSON::ObjectId.from_string(id)) rescue nil
+        @clazz.find(bson_id(id)) rescue nil
       end
 
       def load_all(ids)
-        @clazz.where(:_id.in => ids.map { |id| ::Moped::BSON::ObjectId.from_string(id) })
+        @clazz.where(:_id.in => ids.map { |id| bson_id(id) })
+      end
+
+      def bson_id(id)
+        if Gem::Version.new(Mongoid::MONGODB_VERSION) >= Gem::Version.new('3')
+          ::Moped::BSON::ObjectId.from_string(id)
+        else
+          ::BSON::ObjectId.from_string(id)
+        end
       end
     end
   end
