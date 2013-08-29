@@ -5,13 +5,13 @@ begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
     gem.name = "sunspot_mongoid2"
-    gem.version = '0.5.1.6'
+    gem.version = '0.5.1.7'
     gem.summary = %Q{A Sunspot wrapper for Mongoid 2 or newer.}
     gem.description = %Q{A Sunspot wrapper for Mongoid that is like sunspot_rails.}
     gem.email = "jugyo.org@gmail.com aq1018@gmail.com hlegius@gmail.com"
     gem.homepage = "http://github.com/hlegius/sunspot_mongoid"
     gem.authors = ["jugyo", "aq1018", 'hlegius']
-    gem.add_runtime_dependency "mongoid", ">= 0"
+    gem.add_runtime_dependency "mongoid", ">= 2"
     gem.add_runtime_dependency "sunspot", ">= 2"
     gem.add_runtime_dependency "sunspot_rails", ">= 2"
     gem.add_development_dependency "shoulda", ">= 0"
