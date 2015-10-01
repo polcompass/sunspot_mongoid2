@@ -48,7 +48,7 @@ module Sunspot
 
       def bson_id(id)
         if Gem::Version.new(Mongoid::VERSION) >= Gem::Version.new('3')
-          ::Moped::BSON::ObjectId.from_string(id)
+          ::BSON::ObjectId.from_string(id)
         else
           ::BSON::ObjectId.from_string(id)
         end
